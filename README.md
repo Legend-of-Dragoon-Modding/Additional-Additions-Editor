@@ -1,6 +1,3 @@
-# durt loves fishing
+# Severed Chains Devkit
 
-
-Book art by Melissa Krautheim. view in [opengameart.org](https://opengameart.org/content/epic-collection-book)
-
-Fishing artwork by [shubibubi](https://shubibubi.itch.io)
+A basic example mod to get you started. More to come later.
