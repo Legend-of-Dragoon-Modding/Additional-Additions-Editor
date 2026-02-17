@@ -25,6 +25,7 @@ public class EditHitScreen extends MenuScreen {
   private final Additional.Hit original;
   private final int charId;
 
+  private int tickDelay;
   private int frameIndex;
 
   public EditHitScreen(final ModelManager modelManager, final Additional additional, final Additional.Hit hit, final int charId) {
@@ -176,11 +177,17 @@ public class EditHitScreen extends MenuScreen {
 
   @Override
   protected void render() {
-    this.frameIndex++;
+    if(this.tickDelay < 2) {
+      this.tickDelay++;
+    } else {
+      this.tickDelay = 0;
 
-    if(this.frameIndex >= this.hit.totalFrames) {
-      this.modelManager.restartAnimation();
-      this.frameIndex = 0;
+      this.frameIndex++;
+
+      if(this.frameIndex >= this.hit.totalFrames) {
+        this.modelManager.restartAnimation();
+        this.frameIndex = 0;
+      }
     }
 
     this.modelManager.render(true);

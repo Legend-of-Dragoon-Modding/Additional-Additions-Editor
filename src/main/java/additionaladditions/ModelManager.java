@@ -181,7 +181,7 @@ public class ModelManager {
       applyModelRotationAndScale(this.model);
 
       if(alwaysAnimate || this.model.remainingFrames_9e != 0) {
-        animateModel(this.model);
+        animateModel(this.model, 6);
       }
 
       tmdGp0Tpage_1f8003ec = this.model.tpage_108;

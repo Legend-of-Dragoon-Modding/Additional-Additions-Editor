@@ -57,7 +57,7 @@ public class AdditionEditorEngineState extends EngineState<AdditionEditorEngineS
   public void init() {
     super.init();
     resizeDisplay(320, 240);
-    vsyncMode_8007a3b8 = 3;
+    vsyncMode_8007a3b8 = 1;
 
     this.additionManager.loadAll(this.modelManager);
 

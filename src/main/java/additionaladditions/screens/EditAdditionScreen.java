@@ -43,6 +43,7 @@ public class EditAdditionScreen extends MenuScreen {
   private final Dropdown<Integer> hit;
   private final Button editHit;
 
+  private int tickDelay;
   private int hitIndex;
   private int frameIndex;
 
@@ -174,6 +175,7 @@ public class EditAdditionScreen extends MenuScreen {
       this.additional.hits.remove(this.hit.getSelectedIndex());
       this.hit.removeOption(this.hit.getSelectedIndex());
       this.onHitSelected(this.hit.getSelectedIndex());
+      this.tickDelay = 0;
       this.frameIndex = 0;
       this.hitIndex = 0;
     }
@@ -194,17 +196,23 @@ public class EditAdditionScreen extends MenuScreen {
       return;
     }
 
-    this.frameIndex++;
+    if(this.tickDelay < 2) {
+      this.tickDelay++;
+    } else {
+      this.tickDelay = 0;
 
-    if(this.frameIndex >= this.additional.hits.get(this.hitIndex).totalFrames) {
-      this.hitIndex++;
+      this.frameIndex++;
 
-      if(this.hitIndex >= this.additional.hits.size()) {
-        this.hitIndex = 0;
+      if(this.frameIndex >= this.additional.hits.get(this.hitIndex).totalFrames) {
+        this.hitIndex++;
+
+        if(this.hitIndex >= this.additional.hits.size()) {
+          this.hitIndex = 0;
+        }
+
+        this.modelManager.applyAnimation(this.charId, this.additional.hits.get(this.hitIndex).animationIndex);
+        this.frameIndex = 0;
       }
-
-      this.modelManager.applyAnimation(this.charId, this.additional.hits.get(this.hitIndex).animationIndex);
-      this.frameIndex = 0;
     }
 
     this.modelManager.render();
