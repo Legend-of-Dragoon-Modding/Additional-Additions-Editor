@@ -4,6 +4,8 @@
 *.conf
 *.dcnf
 
+/mods
+
 
 
 /.idea/gradle.xml

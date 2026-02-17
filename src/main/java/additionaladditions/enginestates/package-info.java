@@ -1,0 +1,4 @@
+@ParametersAreNonnullByDefault
+package additionaladditions.enginestates;
+
+import javax.annotation.ParametersAreNonnullByDefault;

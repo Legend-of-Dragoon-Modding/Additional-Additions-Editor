@@ -1,0 +1,4 @@
+@ParametersAreNonnullByDefault
+package additionaladditions.campaigntypes;
+
+import javax.annotation.ParametersAreNonnullByDefault;

@@ -5,8 +5,8 @@ plugins {
   id 'maven-publish'
 }
 
-group = "examplemod"
-version = "1.0-SNAPSHOT"
+group = "additional-additions-editor"
+version = "0.1-beta"
 
 java {
   sourceCompatibility = targetCompatibility = JavaVersion.VERSION_25
@@ -33,6 +33,7 @@ repositories {
 
 dependencies {
   implementation "legend:lod:snapshot"
+  implementation 'com.google.code.findbugs:jsr305:3.0.2'
 }
 
 sourceSets {

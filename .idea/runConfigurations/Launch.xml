@@ -2,7 +2,7 @@
   <configuration default="false" name="Launch" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="openjdk-25" />
     <option name="MAIN_CLASS_NAME" value="legend.game.Main" />
-    <module name="examplemod.main" />
+    <module name="additional-additions-editor.main" />
     <option name="PROGRAM_PARAMETERS" value="-Xms1g" />
     <option name="VM_PARAMETERS" value="-Dscdk=true -Xmx2g -ea -Djoml.fastmath -Djoml.sinLookup -Djoml.useMathFma" />
     <method v="2">
