@@ -93,7 +93,7 @@ public class EditAdditionScreen extends MenuScreen {
     hitName.setScale(0.5f);
     hitName.setPos(overlayFrameName.getX(), overlayFrameName.getY() + overlayFrameName.getHeight() + 2);
 
-    this.hit = this.addControl(new Dropdown<>());
+    this.hit = this.addControl(new Dropdown<>((i, e) -> Integer.toString(i + 1)));
     this.hit.setScale(0.5f);
     this.hit.setPos(hitName.getX() + hitName.getWidth() + 2, hitName.getY());
     this.hit.setSize(40, hitName.getHeight());
@@ -167,7 +167,7 @@ public class EditAdditionScreen extends MenuScreen {
   }
 
   private void onRemoveHitClick() {
-    this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_addition.hit_remove_confirm", this.hit.getSelectedIndex()), 2, this::onRemoveHitConfirm)));
+    this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_addition.hit_remove_confirm", this.hit.getSelectedIndex() + 1), 2, this::onRemoveHitConfirm)));
   }
 
   private void onRemoveHitConfirm(final MessageBoxResult result) {

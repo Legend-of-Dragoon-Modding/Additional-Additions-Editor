@@ -51,7 +51,7 @@ public class TopLevelScreen extends MenuScreen {
 
     this.addHotkey(I18n.translate("additional_additions_editor.screens.top_level.quit"), INPUT_ACTION_MENU_BACK, this::quit);
 
-    this.characterDropdown = this.addControl(new Dropdown<>(nameMap::get));
+    this.characterDropdown = this.addControl(new Dropdown<>((i, key) -> nameMap.get(key)));
     this.characterDropdown.setScale(0.5f);
     this.characterDropdown.setHeight(10);
     this.characterDropdown.onSelection(this::onCharacterSelected);
@@ -60,7 +60,7 @@ public class TopLevelScreen extends MenuScreen {
       this.characterDropdown.addOption(charId);
     }
 
-    this.selectedAdditionDropdown = this.addControl(new Dropdown<>(additional -> additional.name));
+    this.selectedAdditionDropdown = this.addControl(new Dropdown<>((i, additional) -> additional.name));
     this.selectedAdditionDropdown.setScale(0.5f);
     this.selectedAdditionDropdown.setHeight(10);
     this.selectedAdditionDropdown.onSelection(this::onSelectedAdditionSelected);

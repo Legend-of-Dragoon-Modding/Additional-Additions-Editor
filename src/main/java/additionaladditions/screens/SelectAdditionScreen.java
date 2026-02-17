@@ -50,7 +50,7 @@ public class SelectAdditionScreen extends MenuScreen {
     label.setPos((panel.getWidth() - label.getWidth()) / 2, 12);
     label.setZ(z - 1);
 
-    this.text = panel.addControl(new Dropdown<>(I18n::translate));
+    this.text = panel.addControl(new Dropdown<>((i, addition) -> I18n.translate(addition)));
     this.text.setSize(165, 16);
     this.text.setPos(25, 28);
     this.text.setZ(z - 1);
