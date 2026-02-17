@@ -83,14 +83,14 @@ public class ModelManager {
             this.additionAnimationParts[charId].add(new TmdAnimationFile(file));
           }
 
-          this.fileToCrcMap.put(additionPackageIndex << 8 | fileIndex - 16, knownCrcs.get(crc));
+          this.fileToCrcMap.put(additionPackageIndex << 8 | fileIndex, knownCrcs.get(crc));
         }
       }
     }
   }
 
   public int getCacheIndexForAdditionPackage(final int additionPackageIndex, final int animationIndex) {
-    return this.fileToCrcMap.get(additionPackageIndex << 8 | animationIndex);
+    return this.fileToCrcMap.get(additionPackageIndex << 8 | animationIndex + 16);
   }
 
   public String getFilenameForCacheIndex(final int charId, final int cacheIndex) {
