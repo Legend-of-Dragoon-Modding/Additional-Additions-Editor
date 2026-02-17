@@ -11,7 +11,7 @@ import static legend.core.GameEngine.REGISTRIES;
 public final class AdditionalAdditionsCampaignTypes {
   private AdditionalAdditionsCampaignTypes() { }
 
-  private static final Registrar<CampaignType, RegisterCampaignTypesEvent> REGISTRAR = new Registrar<>(REGISTRIES.campaignTypes, AdditionalAdditionsMod.MOD_ID);
+  private static final Registrar<CampaignType, RegisterCampaignTypesEvent> REGISTRAR = new Registrar<>(REGISTRIES.campaignTypes, AdditionalAdditionsEditorMod.MOD_ID);
 
   public static final RegistryDelegate<AdditionEditorCampaignType> ADDITION_EDITOR = REGISTRAR.register("addition_editor", AdditionEditorCampaignType::new);
 

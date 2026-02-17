@@ -14,7 +14,7 @@ public final class AdditionalAdditionsEngineStateTypes {
   private static AdditionManager additionManager;
   private static ModelManager modelManager;
 
-  private static final Registrar<EngineStateType<?>, RegisterEngineStateTypesEvent> REGISTRAR = new Registrar<>(REGISTRIES.engineStateTypes, AdditionalAdditionsMod.MOD_ID);
+  private static final Registrar<EngineStateType<?>, RegisterEngineStateTypesEvent> REGISTRAR = new Registrar<>(REGISTRIES.engineStateTypes, AdditionalAdditionsEditorMod.MOD_ID);
 
   public static final RegistryDelegate<EngineStateType<AdditionEditorEngineState>> ADDITION_EDITOR = REGISTRAR.register("addition_editor", () -> new EngineStateType<>(AdditionEditorEngineState.class, () -> new AdditionEditorEngineState(additionManager, modelManager)));
 

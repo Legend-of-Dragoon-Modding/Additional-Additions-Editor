@@ -15,14 +15,14 @@ import org.legendofdragoon.modloader.registries.RegistryId;
 
 import static legend.core.GameEngine.EVENTS;
 
-@Mod(id = AdditionalAdditionsMod.MOD_ID, version = "3.0.0")
-public class AdditionalAdditionsMod {
+@Mod(id = AdditionalAdditionsEditorMod.MOD_ID, version = "3.0.0")
+public class AdditionalAdditionsEditorMod {
   public static final String MOD_ID = "additional_additions_editor";
 
   private final AdditionManager additionManager = new AdditionManager();
   private final ModelManager modelManager = new ModelManager();
 
-  public AdditionalAdditionsMod() {
+  public AdditionalAdditionsEditorMod() {
     EVENTS.register(this);
   }
 
