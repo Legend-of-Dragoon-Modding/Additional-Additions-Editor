@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "additional-additions-editor"
-version = "0.1.4-beta"
+version = "0.2.0-beta"
 
 java {
   sourceCompatibility = targetCompatibility = JavaVersion.VERSION_25

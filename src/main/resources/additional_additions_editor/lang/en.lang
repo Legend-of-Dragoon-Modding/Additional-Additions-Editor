@@ -31,6 +31,7 @@ additional_additions_editor.screens.edit_addition.save=Save
 additional_additions_editor.screens.edit_hit.back=Back
 additional_additions_editor.screens.edit_hit.do_you_want_to_save=Do you want to save changes?
 additional_additions_editor.screens.edit_hit.animation=Anim:
+additional_additions_editor.screens.edit_hit.animation_scale=Anim Scale:
 additional_additions_editor.screens.edit_hit.total_frames=Total Frames:
 additional_additions_editor.screens.edit_hit.button_delay=Button Delay:
 additional_additions_editor.screens.edit_hit.button_window=Button Window:

@@ -152,8 +152,10 @@ public class ModelManager {
     this.model.disableInterpolation_a2 = false;
   }
 
-  public void applyAnimation(final int charId, final int animationIndex) {
-    loadModelStandardAnimation(this.model, this.additionAnimationParts[charId].get(animationIndex));
+  public void applyAnimation(final int charId, final int animationIndex, final float interpolationScale) {
+    final TmdAnimationFile animation = this.additionAnimationParts[charId].get(animationIndex);
+    animation.interpolationScale = interpolationScale;
+    loadModelStandardAnimation(this.model, animation);
     this.model.disableInterpolation_a2 = true;
   }
 

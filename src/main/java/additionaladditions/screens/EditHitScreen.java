@@ -49,9 +49,22 @@ public class EditHitScreen extends MenuScreen {
       this.initHit();
     });
 
+    final Label animationScaleName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.animation_scale")));
+    animationScaleName.setPos(animationName.getX(), animationName.getY() + animationName.getHeight() + 2);
+    animationScaleName.setScale(0.5f);
+
+    final NumberSpinner<Integer> animationScale = this.addControl(NumberSpinner.intSpinner(hit.interpolationScale, 1, 5000));
+    animationScale.setScale(0.5f);
+    animationScale.setPos(animationScaleName.getX() + animationScaleName.getWidth() + 2, animationScaleName.getY());
+    animationScale.setSize(25, animationScaleName.getHeight());
+    animationScale.onChange(index -> {
+      this.hit.interpolationScale = index;
+      this.initHit();
+    });
+
     final Label totalFramesName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.total_frames")));
     totalFramesName.setScale(0.5f);
-    totalFramesName.setPos(animationName.getX(), animationName.getY() + animationName.getHeight() + 2);
+    totalFramesName.setPos(animationScaleName.getX(), animationScaleName.getY() + animationScaleName.getHeight() + 2);
 
     final NumberSpinner<Integer> totalFrames = this.addControl(NumberSpinner.intSpinner(hit.totalFrames, 0, 999));
     totalFrames.setScale(0.5f);
@@ -153,7 +166,7 @@ public class EditHitScreen extends MenuScreen {
   }
 
   private void initHit() {
-    this.modelManager.applyAnimation(this.charId, this.hit.animationIndex);
+    this.modelManager.applyAnimation(this.charId, this.hit.animationIndex, this.hit.interpolationScale / 100.0f);
     this.modelManager.restartAnimation();
     this.frameIndex = 0;
   }

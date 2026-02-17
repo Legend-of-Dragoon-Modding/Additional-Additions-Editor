@@ -157,6 +157,7 @@ public class Additional {
     public final int charId;
 
     public int animationIndex;
+    public int interpolationScale = 100;
 
     /** {@link AdditionHitProperties10#flags_00} */
     public int flags = 0xc0;
@@ -215,6 +216,7 @@ public class Additional {
 
     public void set(final Hit other) {
       this.animationIndex = other.animationIndex;
+      this.interpolationScale = other.interpolationScale;
 
       this.flags = other.flags;
       this.audioFile = other.audioFile;
@@ -238,6 +240,7 @@ public class Additional {
     public JsonObject toJson(final ModelManager modelManager) {
       final JsonObject obj = new JsonObject();
       obj.addProperty("animation", modelManager.getFilenameForCacheIndex(this.charId, this.animationIndex));
+      obj.addProperty("animation_scale", this.interpolationScale);
       obj.addProperty("flags", this.flags);
       obj.addProperty("audio_file", this.audioFile);
       obj.addProperty("fail_animation", this.failAnimation);
@@ -256,6 +259,13 @@ public class Additional {
 
     public void fromJson(final ModelManager modelManager, final JsonObject obj) {
       this.animationIndex = modelManager.getCacheIndexForFilename(this.charId, obj.getAsJsonPrimitive("animation").getAsString());
+
+      if(obj.has("animation_scale")) {
+        this.interpolationScale = obj.getAsJsonPrimitive("animation_scale").getAsInt();
+      } else {
+        this.interpolationScale = 100;
+      }
+
       this.flags = obj.getAsJsonPrimitive("flags").getAsInt();
       this.audioFile = obj.getAsJsonPrimitive("audio_file").getAsInt();
       this.failAnimation = obj.getAsJsonPrimitive("fail_animation").getAsInt();
@@ -279,6 +289,7 @@ public class Additional {
 
       return
         this.animationIndex == other.animationIndex &&
+        this.interpolationScale == other.interpolationScale &&
         this.flags == other.flags &&
         this.audioFile == other.audioFile &&
         this.failAnimation == other.failAnimation &&

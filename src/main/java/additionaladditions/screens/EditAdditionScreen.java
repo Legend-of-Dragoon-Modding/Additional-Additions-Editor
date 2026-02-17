@@ -151,7 +151,8 @@ public class EditAdditionScreen extends MenuScreen {
 
     this.onHitSelected(this.hit.getSelectedIndex());
 
-    this.modelManager.applyAnimation(this.charId, this.additional.hits.get(this.hitIndex).animationIndex);
+    final Additional.Hit hit = this.additional.hits.get(this.hitIndex);
+    this.modelManager.applyAnimation(this.charId, hit.animationIndex, hit.interpolationScale / 100.0f);
   }
 
   private void onHitSelected(final int index) {
@@ -210,7 +211,9 @@ public class EditAdditionScreen extends MenuScreen {
           this.hitIndex = 0;
         }
 
-        this.modelManager.applyAnimation(this.charId, this.additional.hits.get(this.hitIndex).animationIndex);
+        final Additional.Hit hit = this.additional.hits.get(this.hitIndex);
+
+        this.modelManager.applyAnimation(this.charId, hit.animationIndex, hit.interpolationScale / 100.0f);
         this.frameIndex = 0;
       }
     }
