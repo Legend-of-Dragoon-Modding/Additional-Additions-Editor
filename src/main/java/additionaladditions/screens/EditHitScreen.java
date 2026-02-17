@@ -106,7 +106,7 @@ public class EditHitScreen extends MenuScreen {
     knockbackName.setScale(0.5f);
     knockbackName.setPos(moveFramesName.getX(), moveFramesName.getY() + moveFramesName.getHeight() + 2);
 
-    final NumberSpinner<Integer> knockback = this.addControl(NumberSpinner.intSpinner(hit.knockback, 0, 999));
+    final NumberSpinner<Integer> knockback = this.addControl(NumberSpinner.intSpinner(hit.knockback, -999, 999));
     knockback.setScale(0.5f);
     knockback.setPos(knockbackName.getX() + knockbackName.getWidth() + 2, knockbackName.getY());
     knockback.setSize(25, knockbackName.getHeight());
