@@ -174,6 +174,8 @@ public class EditAdditionScreen extends MenuScreen {
       this.additional.hits.remove(this.hit.getSelectedIndex());
       this.hit.removeOption(this.hit.getSelectedIndex());
       this.onHitSelected(this.hit.getSelectedIndex());
+      this.frameIndex = 0;
+      this.hitIndex = 0;
     }
   }
 
@@ -188,6 +190,10 @@ public class EditAdditionScreen extends MenuScreen {
 
   @Override
   protected void render() {
+    if(this.additional.hits.isEmpty()) {
+      return;
+    }
+
     this.frameIndex++;
 
     if(this.frameIndex >= this.additional.hits.get(this.hitIndex).totalFrames) {
