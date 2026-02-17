@@ -149,6 +149,7 @@ public class ModelManager {
 
   public void applyIdleAnimation() {
     loadModelStandardAnimation(this.model, this.idle);
+    this.model.disableInterpolation_a2 = false;
   }
 
   public void applyAnimation(final int charId, final int animationIndex) {

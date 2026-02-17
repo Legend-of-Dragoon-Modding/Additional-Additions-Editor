@@ -161,7 +161,7 @@ public class TopLevelScreen extends MenuScreen {
   }
 
   private void onEditAdditionClose() {
-
+    this.modelManager.applyIdleAnimation();
   }
 
   private void quit() {
@@ -176,6 +176,6 @@ public class TopLevelScreen extends MenuScreen {
 
   @Override
   protected void render() {
-    this.modelManager.render();
+    this.modelManager.render(true);
   }
 }
