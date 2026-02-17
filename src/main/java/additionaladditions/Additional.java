@@ -167,15 +167,15 @@ public class Additional {
 
     /** {@link AdditionHitProperties10#totalFrames_01} */
     public int totalFrames;
+    /** {@link AdditionHitProperties10#overlayHitFrameOffset_02} */
+    public int buttonDelay;
+    /** {@link AdditionHitProperties10#totalSuccessFrames_03} */
+    public int buttonWindow;
     /** {@link AdditionHitProperties10#framesToHitPosition_0c} */
     public int moveFrames;
-    /** {@link AdditionHitProperties10#totalSuccessFrames_03} */
-    public int successFrames;
-    /** {@link AdditionHitProperties10#overlayHitFrameOffset_02} */
-    public int hitFrame;
 
     /** {@link AdditionHitProperties10#hitDistanceFromTarget_0b} */
-    public int distanceFromTarget;
+    public int knockback;
 
     /** {@link AdditionHitProperties10#cameraMovementX_08} */
     public int cameraMovementX;
@@ -200,10 +200,10 @@ public class Additional {
 
       this.totalFrames = properties.totalFrames_01;
       this.moveFrames = properties.framesToHitPosition_0c;
-      this.successFrames = properties.totalSuccessFrames_03;
-      this.hitFrame = properties.overlayHitFrameOffset_02;
+      this.buttonWindow = properties.totalSuccessFrames_03;
+      this.buttonDelay = properties.overlayHitFrameOffset_02;
 
-      this.distanceFromTarget = properties.hitDistanceFromTarget_0b;
+      this.knockback = properties.hitDistanceFromTarget_0b;
 
       this.cameraMovementX = properties.cameraMovementX_08;
       this.cameraMovementZ = properties.cameraMovementZ_09;
@@ -222,10 +222,10 @@ public class Additional {
 
       this.totalFrames = other.totalFrames;
       this.moveFrames = other.moveFrames;
-      this.successFrames = other.successFrames;
-      this.hitFrame = other.hitFrame;
+      this.buttonWindow = other.buttonWindow;
+      this.buttonDelay = other.buttonDelay;
 
-      this.distanceFromTarget = other.distanceFromTarget;
+      this.knockback = other.knockback;
 
       this.cameraMovementX = other.cameraMovementX;
       this.cameraMovementZ = other.cameraMovementZ;
@@ -243,9 +243,9 @@ public class Additional {
       obj.addProperty("fail_animation", this.failAnimation);
       obj.addProperty("total_frames", this.totalFrames);
       obj.addProperty("move_frames", this.moveFrames);
-      obj.addProperty("success_frames", this.successFrames);
-      obj.addProperty("hit_frame", this.hitFrame);
-      obj.addProperty("distance_from_target", this.distanceFromTarget);
+      obj.addProperty("success_frames", this.buttonWindow);
+      obj.addProperty("hit_frame", this.buttonDelay);
+      obj.addProperty("distance_from_target", this.knockback);
       obj.addProperty("camera_movement_x", this.cameraMovementX);
       obj.addProperty("camera_movement_z", this.cameraMovementZ);
       obj.addProperty("camera_movement_ticks", this.cameraMovementTicks);
@@ -261,9 +261,9 @@ public class Additional {
       this.failAnimation = obj.getAsJsonPrimitive("fail_animation").getAsInt();
       this.totalFrames = obj.getAsJsonPrimitive("total_frames").getAsInt();
       this.moveFrames = obj.getAsJsonPrimitive("move_frames").getAsInt();
-      this.successFrames = obj.getAsJsonPrimitive("success_frames").getAsInt();
-      this.hitFrame = obj.getAsJsonPrimitive("hit_frame").getAsInt();
-      this.distanceFromTarget = obj.getAsJsonPrimitive("distance_from_target").getAsInt();
+      this.buttonWindow = obj.getAsJsonPrimitive("success_frames").getAsInt();
+      this.buttonDelay = obj.getAsJsonPrimitive("hit_frame").getAsInt();
+      this.knockback = obj.getAsJsonPrimitive("distance_from_target").getAsInt();
       this.cameraMovementX = obj.getAsJsonPrimitive("camera_movement_x").getAsInt();
       this.cameraMovementZ = obj.getAsJsonPrimitive("camera_movement_z").getAsInt();
       this.cameraMovementTicks = obj.getAsJsonPrimitive("camera_movement_ticks").getAsInt();
@@ -284,9 +284,9 @@ public class Additional {
         this.failAnimation == other.failAnimation &&
         this.totalFrames == other.totalFrames &&
         this.moveFrames == other.moveFrames &&
-        this.successFrames == other.successFrames &&
-        this.hitFrame == other.hitFrame &&
-        this.distanceFromTarget == other.distanceFromTarget &&
+        this.buttonWindow == other.buttonWindow &&
+        this.buttonDelay == other.buttonDelay &&
+        this.knockback == other.knockback &&
         this.cameraMovementX == other.cameraMovementX &&
         this.cameraMovementZ == other.cameraMovementZ &&
         this.cameraMovementTicks == other.cameraMovementTicks &&

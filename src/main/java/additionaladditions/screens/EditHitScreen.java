@@ -10,7 +10,6 @@ import legend.game.inventory.screens.MessageBoxScreen;
 import legend.game.inventory.screens.TextColour;
 import legend.game.inventory.screens.controls.Label;
 import legend.game.inventory.screens.controls.NumberSpinner;
-import legend.game.inventory.screens.controls.Textbox;
 import legend.game.types.MessageBoxResult;
 
 import static legend.game.Text.renderText;
@@ -50,20 +49,9 @@ public class EditHitScreen extends MenuScreen {
       this.initHit();
     });
 
-    final Label flagsName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.flags")));
-    flagsName.setScale(0.5f);
-    flagsName.setPos(animationName.getX(), animationName.getY() + animationName.getHeight() + 2);
-
-    final Textbox flags = this.addControl(new Textbox());
-    flags.setScale(0.5f);
-    flags.setPos(flagsName.getX() + flagsName.getWidth() + 2, flagsName.getY());
-    flags.setSize(25, flagsName.getHeight());
-    flags.onChanged(val -> this.hit.flags = Integer.parseInt(val, 16));
-    flags.setText(Integer.toHexString(this.hit.flags));
-
     final Label totalFramesName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.total_frames")));
     totalFramesName.setScale(0.5f);
-    totalFramesName.setPos(flagsName.getX(), flagsName.getY() + flagsName.getHeight() + 2);
+    totalFramesName.setPos(animationName.getX(), animationName.getY() + animationName.getHeight() + 2);
 
     final NumberSpinner<Integer> totalFrames = this.addControl(NumberSpinner.intSpinner(hit.totalFrames, 0, 999));
     totalFrames.setScale(0.5f);
@@ -71,9 +59,29 @@ public class EditHitScreen extends MenuScreen {
     totalFrames.setSize(25, totalFramesName.getHeight());
     totalFrames.onChange(frames -> this.hit.totalFrames = frames);
 
+    final Label buttonDelayName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.button_delay")));
+    buttonDelayName.setScale(0.5f);
+    buttonDelayName.setPos(totalFramesName.getX(), totalFramesName.getY() + totalFramesName.getHeight() + 2);
+
+    final NumberSpinner<Integer> buttonDelay = this.addControl(NumberSpinner.intSpinner(hit.buttonDelay, 0, 999));
+    buttonDelay.setScale(0.5f);
+    buttonDelay.setPos(buttonDelayName.getX() + buttonDelayName.getWidth() + 2, buttonDelayName.getY());
+    buttonDelay.setSize(25, buttonDelayName.getHeight());
+    buttonDelay.onChange(delay -> this.hit.buttonDelay = delay);
+
+    final Label buttonWindowName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.button_window")));
+    buttonWindowName.setScale(0.5f);
+    buttonWindowName.setPos(buttonDelayName.getX(), buttonDelayName.getY() + buttonDelayName.getHeight() + 2);
+
+    final NumberSpinner<Integer> successFrames = this.addControl(NumberSpinner.intSpinner(hit.buttonWindow, 0, 999));
+    successFrames.setScale(0.5f);
+    successFrames.setPos(buttonWindowName.getX() + buttonWindowName.getWidth() + 2, buttonWindowName.getY());
+    successFrames.setSize(25, buttonWindowName.getHeight());
+    successFrames.onChange(frames -> this.hit.buttonWindow = frames);
+
     final Label moveFramesName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.move_frames")));
     moveFramesName.setScale(0.5f);
-    moveFramesName.setPos(totalFramesName.getX(), totalFramesName.getY() + totalFramesName.getHeight() + 2);
+    moveFramesName.setPos(buttonWindowName.getX(), buttonWindowName.getY() + buttonWindowName.getHeight() + 2);
 
     final NumberSpinner<Integer> moveFrames = this.addControl(NumberSpinner.intSpinner(hit.moveFrames, 0, 999));
     moveFrames.setScale(0.5f);
@@ -81,41 +89,21 @@ public class EditHitScreen extends MenuScreen {
     moveFrames.setSize(25, moveFramesName.getHeight());
     moveFrames.onChange(frames -> this.hit.moveFrames = frames);
 
-    final Label successFramesName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.success_frames")));
-    successFramesName.setScale(0.5f);
-    successFramesName.setPos(moveFramesName.getX(), moveFramesName.getY() + moveFramesName.getHeight() + 2);
+    final Label knockbackName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.knockback")));
+    knockbackName.setScale(0.5f);
+    knockbackName.setPos(moveFramesName.getX(), moveFramesName.getY() + moveFramesName.getHeight() + 2);
 
-    final NumberSpinner<Integer> successFrames = this.addControl(NumberSpinner.intSpinner(hit.successFrames, 0, 999));
-    successFrames.setScale(0.5f);
-    successFrames.setPos(successFramesName.getX() + successFramesName.getWidth() + 2, successFramesName.getY());
-    successFrames.setSize(25, successFramesName.getHeight());
-    successFrames.onChange(frames -> this.hit.successFrames = frames);
-
-    final Label hitFrameName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.hit_frame")));
-    hitFrameName.setScale(0.5f);
-    hitFrameName.setPos(successFramesName.getX(), successFramesName.getY() + successFramesName.getHeight() + 2);
-
-    final NumberSpinner<Integer> hitFrame = this.addControl(NumberSpinner.intSpinner(hit.hitFrame, 0, 999));
-    hitFrame.setScale(0.5f);
-    hitFrame.setPos(hitFrameName.getX() + hitFrameName.getWidth() + 2, hitFrameName.getY());
-    hitFrame.setSize(25, hitFrameName.getHeight());
-    hitFrame.onChange(frame -> this.hit.hitFrame = frame);
-
-    final Label distanceFromTargetName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.distance_from_target")));
-    distanceFromTargetName.setScale(0.5f);
-    distanceFromTargetName.setPos(hitFrameName.getX(), hitFrameName.getY() + hitFrameName.getHeight() + 2);
-
-    final NumberSpinner<Integer> distanceFromTarget = this.addControl(NumberSpinner.intSpinner(hit.distanceFromTarget, 0, 999));
-    distanceFromTarget.setScale(0.5f);
-    distanceFromTarget.setPos(distanceFromTargetName.getX() + distanceFromTargetName.getWidth() + 2, distanceFromTargetName.getY());
-    distanceFromTarget.setSize(25, distanceFromTargetName.getHeight());
-    distanceFromTarget.onChange(distance -> this.hit.distanceFromTarget = distance);
+    final NumberSpinner<Integer> knockback = this.addControl(NumberSpinner.intSpinner(hit.knockback, 0, 999));
+    knockback.setScale(0.5f);
+    knockback.setPos(knockbackName.getX() + knockbackName.getWidth() + 2, knockbackName.getY());
+    knockback.setSize(25, knockbackName.getHeight());
+    knockback.onChange(distance -> this.hit.knockback = distance);
 
     final Label cameraMovementXName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_hit.camera_movement_x")));
     cameraMovementXName.setScale(0.5f);
-    cameraMovementXName.setPos(distanceFromTargetName.getX(), distanceFromTargetName.getY() + distanceFromTargetName.getHeight() + 2);
+    cameraMovementXName.setPos(knockbackName.getX(), knockbackName.getY() + knockbackName.getHeight() + 2);
 
-    final NumberSpinner<Integer> cameraMovementX = this.addControl(NumberSpinner.intSpinner(hit.cameraMovementX, 0, 999));
+    final NumberSpinner<Integer> cameraMovementX = this.addControl(NumberSpinner.intSpinner(hit.cameraMovementX, -999, 999));
     cameraMovementX.setScale(0.5f);
     cameraMovementX.setPos(cameraMovementXName.getX() + cameraMovementXName.getWidth() + 2, cameraMovementXName.getY());
     cameraMovementX.setSize(25, cameraMovementXName.getHeight());
@@ -125,7 +113,7 @@ public class EditHitScreen extends MenuScreen {
     cameraMovementZName.setScale(0.5f);
     cameraMovementZName.setPos(cameraMovementXName.getX(), cameraMovementXName.getY() + cameraMovementXName.getHeight() + 2);
 
-    final NumberSpinner<Integer> cameraMovementZ = this.addControl(NumberSpinner.intSpinner(hit.cameraMovementZ, 0, 999));
+    final NumberSpinner<Integer> cameraMovementZ = this.addControl(NumberSpinner.intSpinner(hit.cameraMovementZ, -999, 999));
     cameraMovementZ.setScale(0.5f);
     cameraMovementZ.setPos(cameraMovementZName.getX() + cameraMovementZName.getWidth() + 2, cameraMovementZName.getY());
     cameraMovementZ.setSize(25, cameraMovementZName.getHeight());
