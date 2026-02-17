@@ -7,6 +7,7 @@ additional_additions_editor.screens.top_level.remove_addition=Remove
 additional_additions_editor.screens.top_level.edit_addition=Edit
 additional_additions_editor.screens.top_level.select_addition=Template:
 additional_additions_editor.screens.top_level.addition_remove_confirm=Remove %s?
+additional_additions_editor.screens.top_level.quit=Quit
 
 additional_additions_editor.screens.edit_addition.back=Back
 additional_additions_editor.screens.edit_addition.do_you_want_to_save=Do you want to save changes?

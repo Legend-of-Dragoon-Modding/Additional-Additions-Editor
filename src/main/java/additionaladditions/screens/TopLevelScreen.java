@@ -10,6 +10,7 @@ import legend.game.inventory.screens.MenuScreen;
 import legend.game.inventory.screens.MessageBoxScreen;
 import legend.game.inventory.screens.controls.Button;
 import legend.game.inventory.screens.controls.Dropdown;
+import legend.game.modding.coremod.CoreEngineStateTypes;
 import legend.game.types.MessageBoxResult;
 import org.legendofdragoon.modloader.registries.RegistryDelegate;
 import org.legendofdragoon.modloader.registries.RegistryId;
@@ -20,7 +21,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static legend.game.EngineStates.engineStateOnceLoaded_8004dd24;
+import static legend.game.Scus94491BpeSegment.resetSubmapToNewGame;
 import static legend.game.Scus94491BpeSegment_8004.CHARACTER_ADDITIONS;
+import static legend.game.modding.coremod.CoreMod.INPUT_ACTION_MENU_BACK;
 import static legend.game.sound.Audio.playMenuSound;
 
 public class TopLevelScreen extends MenuScreen {
@@ -44,6 +48,8 @@ public class TopLevelScreen extends MenuScreen {
     for(int i = 0; i < SItem.characterNames_801142dc.length; i++) {
       nameMap.put(AdditionManager.CHAR_IDS.get(i), SItem.characterNames_801142dc[i]);
     }
+
+    this.addHotkey(I18n.translate("additional_additions_editor.screens.top_level.quit"), INPUT_ACTION_MENU_BACK, this::quit);
 
     this.characterDropdown = this.addControl(new Dropdown<>(nameMap::get));
     this.characterDropdown.setScale(0.5f);
@@ -156,6 +162,11 @@ public class TopLevelScreen extends MenuScreen {
 
   private void onEditAdditionClose() {
 
+  }
+
+  private void quit() {
+    resetSubmapToNewGame();
+    engineStateOnceLoaded_8004dd24 = CoreEngineStateTypes.TITLE.get();
   }
 
   @Override
