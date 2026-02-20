@@ -5,7 +5,6 @@ import additionaladditions.ModelManager;
 import legend.game.i18n.I18n;
 import legend.game.inventory.screens.FontOptions;
 import legend.game.inventory.screens.HorizontalAlign;
-import legend.game.inventory.screens.MenuScreen;
 import legend.game.inventory.screens.MessageBoxScreen;
 import legend.game.inventory.screens.TextColour;
 import legend.game.inventory.screens.controls.Label;
@@ -15,7 +14,7 @@ import legend.game.types.MessageBoxResult;
 import static legend.game.Text.renderText;
 import static legend.game.modding.coremod.CoreMod.INPUT_ACTION_MENU_BACK;
 
-public class EditHitScreen extends MenuScreen {
+public class EditHitScreen extends CameraControllableScreen {
   private static final FontOptions FONT = new FontOptions().colour(TextColour.WHITE).shadowColour(TextColour.BLACK).size(0.5f).horizontalAlign(HorizontalAlign.RIGHT);
 
   private final ModelManager modelManager;
