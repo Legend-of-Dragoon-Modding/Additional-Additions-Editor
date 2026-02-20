@@ -10,9 +10,10 @@ import legend.game.types.GameState52c;
 import legend.game.types.GsF_LIGHT;
 import legend.game.types.GsRVIEW2;
 import legend.game.unpacker.FileData;
+import org.joml.Vector3f;
 
+import static legend.core.GameEngine.RENDERER;
 import static legend.game.Graphics.GsSetFlatLight;
-import static legend.game.Graphics.GsSetRefView2L;
 import static legend.game.Graphics.clearBlue_800babc0;
 import static legend.game.Graphics.clearGreen_800bb104;
 import static legend.game.Graphics.clearRed_8007a3a8;
@@ -21,11 +22,13 @@ import static legend.game.Graphics.vsyncMode_8007a3b8;
 import static legend.game.SItem.menuStack;
 
 public class AdditionEditorEngineState extends EngineState<AdditionEditorEngineState> {
-  private final GsRVIEW2 camera = new GsRVIEW2();
   private final GsF_LIGHT[] lights = new GsF_LIGHT[3];
 
   private final AdditionManager additionManager;
   private final ModelManager modelManager;
+
+  private final Vector3f cameraPos = new Vector3f();
+  private final Vector3f cameraRef = new Vector3f();
 
   public AdditionEditorEngineState(final AdditionManager additionManager, final ModelManager modelManager) {
     super(AdditionalAdditionsEngineStateTypes.ADDITION_EDITOR.get());
@@ -50,7 +53,7 @@ public class AdditionEditorEngineState extends EngineState<AdditionEditorEngineS
 
   @Override
   public GsRVIEW2 getCamera() {
-    return this.camera;
+    return null;
   }
 
   @Override
@@ -78,6 +81,10 @@ public class AdditionEditorEngineState extends EngineState<AdditionEditorEngineS
     clearRed_8007a3a8 = 0;
     clearGreen_800bb104 = 0;
     clearBlue_800babc0 = 0;
+
+    this.cameraPos.set(-2000.0f, -2000.0f, -5000.0f);
+    this.cameraRef.set(0.0f, -1000.0f, 0.0f);
+    this.updateCamera();
   }
 
   @Override
@@ -88,10 +95,10 @@ public class AdditionEditorEngineState extends EngineState<AdditionEditorEngineS
       GsSetFlatLight(i, this.lights[i]);
     }
 
-    this.camera.viewpoint_00.set(-2000.0f, -2000.0f, -5000.0f);
-    this.camera.refpoint_0c.set(0.0f, -1000.0f, 0.0f);
-    GsSetRefView2L(this.camera);
-
     menuStack.render();
+  }
+
+  private void updateCamera() {
+    RENDERER.camera().lookAt(this.cameraPos, this.cameraRef);
   }
 }
