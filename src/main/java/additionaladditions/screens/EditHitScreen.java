@@ -10,6 +10,7 @@ import legend.game.inventory.screens.TextColour;
 import legend.game.inventory.screens.controls.Label;
 import legend.game.inventory.screens.controls.NumberSpinner;
 import legend.game.types.MessageBoxResult;
+import legend.game.types.MessageBoxType;
 
 import static legend.game.Text.renderText;
 import static legend.game.modding.coremod.CoreMod.INPUT_ACTION_MENU_BACK;
@@ -199,7 +200,7 @@ public class EditHitScreen extends CameraControllableScreen {
   private void menuBack() {
     this.deferAction(() -> {
       if(!this.hit.equals(this.original)) {
-        this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_hit.do_you_want_to_save"), 2, this::onBackConfirm));
+        this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_hit.do_you_want_to_save"), MessageBoxType.CONFIRMATION, this::onBackConfirm));
       } else {
         this.getStack().popScreen();
       }

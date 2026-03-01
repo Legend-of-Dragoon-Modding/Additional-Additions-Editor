@@ -17,6 +17,7 @@ import legend.game.inventory.screens.controls.Label;
 import legend.game.inventory.screens.controls.NumberSpinner;
 import legend.game.inventory.screens.controls.Textbox;
 import legend.game.types.MessageBoxResult;
+import legend.game.types.MessageBoxType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -167,7 +168,7 @@ public class EditAdditionScreen extends CameraControllableScreen {
   }
 
   private void onRemoveHitClick() {
-    this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_addition.hit_remove_confirm", this.hit.getSelectedIndex() + 1), 2, this::onRemoveHitConfirm)));
+    this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_addition.hit_remove_confirm", this.hit.getSelectedIndex() + 1), MessageBoxType.CONFIRMATION, this::onRemoveHitConfirm)));
   }
 
   private void onRemoveHitConfirm(final MessageBoxResult result) {
@@ -226,7 +227,7 @@ public class EditAdditionScreen extends CameraControllableScreen {
 
   private void menuBack() {
     if(!this.additional.equals(this.original)) {
-      this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_addition.do_you_want_to_save"), 2, this::onBackConfirm)));
+      this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_addition.do_you_want_to_save"), MessageBoxType.CONFIRMATION, this::onBackConfirm)));
     } else {
       this.deferAction(() -> this.getStack().popScreen());
       this.onClose.run();
@@ -276,7 +277,7 @@ public class EditAdditionScreen extends CameraControllableScreen {
       this.original.set(this.additional);
     } catch(final IOException e) {
       LOGGER.error("Failed to save", e);
-      this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_addition.save_failed"), 0, result -> {})));
+      this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.edit_addition.save_failed"), MessageBoxType.ALERT, result -> {})));
     }
   }
 }

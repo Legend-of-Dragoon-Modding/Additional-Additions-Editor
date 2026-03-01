@@ -12,6 +12,7 @@ import legend.game.inventory.screens.controls.Button;
 import legend.game.inventory.screens.controls.Dropdown;
 import legend.game.modding.coremod.CoreEngineStateTypes;
 import legend.game.types.MessageBoxResult;
+import legend.game.types.MessageBoxType;
 import org.legendofdragoon.modloader.registries.RegistryDelegate;
 import org.legendofdragoon.modloader.registries.RegistryId;
 
@@ -145,7 +146,7 @@ public class TopLevelScreen extends MenuScreen {
       return;
     }
 
-    this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.top_level.addition_remove_confirm", this.selectedAdditional.name), 2, this::onRemoveAdditionConfirm)));
+    this.deferAction(() -> this.getStack().pushScreen(new MessageBoxScreen(I18n.translate("additional_additions_editor.screens.top_level.addition_remove_confirm", this.selectedAdditional.name), MessageBoxType.CONFIRMATION, this::onRemoveAdditionConfirm)));
   }
 
   private void onRemoveAdditionConfirm(final MessageBoxResult result) {
