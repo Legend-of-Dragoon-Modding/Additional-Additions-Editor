@@ -23,7 +23,6 @@ public class Additional {
   public String filename;
 
   public String name;
-  public int baseDamage = 100;
   /** {@link AdditionHitProperties10#overlayStartingFrameOffset_0f} */
   public int overlayFrame;
   public final List<SimpleAddition.LevelMultipliers> levelMultipliers = new ArrayList<>();
@@ -37,18 +36,15 @@ public class Additional {
   public void set(final Addition addition) {
     try {
       final Class<SimpleAddition> cls = SimpleAddition.class;
-      final Field baseDamageField = cls.getDeclaredField("baseDamage");
       final Field levelMultipliersField = cls.getDeclaredField("levelMultipliers");
       final Field hitsField = cls.getDeclaredField("hits");
 
-      baseDamageField.setAccessible(true);
       levelMultipliersField.setAccessible(true);
       hitsField.setAccessible(true);
 
       final SimpleAddition.LevelMultipliers[] levelMultipliers = (SimpleAddition.LevelMultipliers[])levelMultipliersField.get(addition);
       final AdditionHitProperties10[] hits = (AdditionHitProperties10[])hitsField.get(addition);
 
-      this.baseDamage = baseDamageField.getInt(addition);
       this.overlayFrame = hits[0].overlayStartingFrameOffset_0f;
 
       this.levelMultipliers.clear();
@@ -71,7 +67,6 @@ public class Additional {
 
   public void set(final Additional other) {
     this.name = other.name;
-    this.baseDamage = other.baseDamage;
     this.overlayFrame = other.overlayFrame;
 
     this.levelMultipliers.clear();
@@ -108,7 +103,6 @@ public class Additional {
     final JsonObject obj = new JsonObject();
     obj.addProperty("char_id", this.charRegId.toString());
     obj.addProperty("name", this.name);
-    obj.addProperty("base_damage", this.baseDamage);
     obj.addProperty("overlay_frame", this.overlayFrame);
     obj.add("level_multipliers", levelMultipliers);
     obj.add("hits", hits);
@@ -117,7 +111,6 @@ public class Additional {
 
   public void fromJson(final ModelManager modelManager, final JsonObject obj) {
     this.name = obj.getAsJsonPrimitive("name").getAsString();
-    this.baseDamage = obj.getAsJsonPrimitive("base_damage").getAsInt();
     this.overlayFrame = obj.getAsJsonPrimitive("overlay_frame").getAsInt();
 
     final JsonArray levelMultipliers = obj.getAsJsonArray("level_multipliers");
@@ -145,12 +138,11 @@ public class Additional {
     }
 
     return
-      this.baseDamage == other.baseDamage &&
-        this.overlayFrame == other.overlayFrame &&
-        Objects.equals(this.name, other.name) &&
-        Objects.equals(this.levelMultipliers, other.levelMultipliers) &&
-        Objects.equals(this.hits, other.hits)
-      ;
+      this.overlayFrame == other.overlayFrame &&
+      Objects.equals(this.name, other.name) &&
+      Objects.equals(this.levelMultipliers, other.levelMultipliers) &&
+      Objects.equals(this.hits, other.hits)
+    ;
   }
 
   public static class Hit {

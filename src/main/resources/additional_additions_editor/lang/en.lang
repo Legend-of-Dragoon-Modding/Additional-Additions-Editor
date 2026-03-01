@@ -12,7 +12,6 @@ additional_additions_editor.screens.top_level.quit=Quit
 additional_additions_editor.screens.edit_addition.back=Back
 additional_additions_editor.screens.edit_addition.do_you_want_to_save=Do you want to save changes?
 additional_additions_editor.screens.edit_addition.name=Name:
-additional_additions_editor.screens.edit_addition.base_damage=Base Damage:
 additional_additions_editor.screens.edit_addition.overlay_frame=Overlay Frame:
 additional_additions_editor.screens.edit_addition.hits=Hits:
 additional_additions_editor.screens.edit_addition.add_hit=Add

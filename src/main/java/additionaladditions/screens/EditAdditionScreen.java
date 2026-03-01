@@ -69,19 +69,9 @@ public class EditAdditionScreen extends CameraControllableScreen {
     name.setSize(40, nameName.getHeight());
     name.setText(additional.name);
 
-    final Label baseDamageName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_addition.base_damage")));
-    baseDamageName.setScale(0.5f);
-    baseDamageName.setPos(nameName.getX(), nameName.getY() + nameName.getHeight() + 2);
-
-    final NumberSpinner<Integer> baseDamage = this.addControl(NumberSpinner.intSpinner(this.additional.baseDamage, 0, 999));
-    baseDamage.setScale(0.5f);
-    baseDamage.setPos(baseDamageName.getX() + baseDamageName.getWidth() + 2, baseDamageName.getY());
-    baseDamage.setSize(25, baseDamageName.getHeight());
-    baseDamage.onChange(damage -> this.additional.baseDamage = damage);
-
     final Label overlayFrameName = this.addControl(new Label(I18n.translate("additional_additions_editor.screens.edit_addition.overlay_frame")));
     overlayFrameName.setScale(0.5f);
-    overlayFrameName.setPos(baseDamageName.getX(), baseDamageName.getY() + baseDamageName.getHeight() + 2);
+    overlayFrameName.setPos(nameName.getX(), nameName.getY() + nameName.getHeight() + 2);
 
     final NumberSpinner<Integer> overlayFrame = this.addControl(NumberSpinner.intSpinner(this.additional.overlayFrame, 0, 999));
     overlayFrame.setScale(0.5f);
