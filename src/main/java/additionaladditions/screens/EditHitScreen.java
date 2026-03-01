@@ -66,7 +66,7 @@ public class EditHitScreen extends CameraControllableScreen {
     totalFramesName.setScale(0.5f);
     totalFramesName.setPos(animationScaleName.getX(), animationScaleName.getY() + animationScaleName.getHeight() + 2);
 
-    final NumberSpinner<Integer> totalFrames = this.addControl(NumberSpinner.intSpinner(hit.totalFrames, 0, 999));
+    final NumberSpinner<Integer> totalFrames = this.addControl(NumberSpinner.intSpinner(hit.totalFrames, 1, 999));
     totalFrames.setScale(0.5f);
     totalFrames.setPos(totalFramesName.getX() + totalFramesName.getWidth() + 2, totalFramesName.getY());
     totalFrames.setSize(25, totalFramesName.getHeight());
@@ -76,7 +76,7 @@ public class EditHitScreen extends CameraControllableScreen {
     buttonDelayName.setScale(0.5f);
     buttonDelayName.setPos(totalFramesName.getX(), totalFramesName.getY() + totalFramesName.getHeight() + 2);
 
-    final NumberSpinner<Integer> buttonDelay = this.addControl(NumberSpinner.intSpinner(hit.buttonDelay, 0, 999));
+    final NumberSpinner<Integer> buttonDelay = this.addControl(NumberSpinner.intSpinner(hit.buttonDelay, 1, 999));
     buttonDelay.setScale(0.5f);
     buttonDelay.setPos(buttonDelayName.getX() + buttonDelayName.getWidth() + 2, buttonDelayName.getY());
     buttonDelay.setSize(25, buttonDelayName.getHeight());
@@ -86,7 +86,7 @@ public class EditHitScreen extends CameraControllableScreen {
     buttonWindowName.setScale(0.5f);
     buttonWindowName.setPos(buttonDelayName.getX(), buttonDelayName.getY() + buttonDelayName.getHeight() + 2);
 
-    final NumberSpinner<Integer> successFrames = this.addControl(NumberSpinner.intSpinner(hit.buttonWindow, 0, 999));
+    final NumberSpinner<Integer> successFrames = this.addControl(NumberSpinner.intSpinner(hit.buttonWindow, 1, 999));
     successFrames.setScale(0.5f);
     successFrames.setPos(buttonWindowName.getX() + buttonWindowName.getWidth() + 2, buttonWindowName.getY());
     successFrames.setSize(25, buttonWindowName.getHeight());
