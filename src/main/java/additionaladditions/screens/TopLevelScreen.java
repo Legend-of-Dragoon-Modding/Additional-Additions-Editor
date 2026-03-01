@@ -112,6 +112,11 @@ public class TopLevelScreen extends MenuScreen {
   }
 
   private void onAddAdditionClick() {
+    if(this.characterDropdown.getSelectedIndex() == 2 || this.characterDropdown.getSelectedIndex() == 8) {
+      playMenuSound(40);
+      return;
+    }
+
     final List<Addition> additions = new ArrayList<>();
 
     for(final RegistryDelegate<Addition> addition : CHARACTER_ADDITIONS[this.characterDropdown.getSelectedIndex()]) {
@@ -141,6 +146,11 @@ public class TopLevelScreen extends MenuScreen {
   }
 
   private void onRemoveAdditionClick() {
+    if(this.characterDropdown.getSelectedIndex() == 2 || this.characterDropdown.getSelectedIndex() == 8) {
+      playMenuSound(40);
+      return;
+    }
+
     if(this.selectedAdditional == null) {
       playMenuSound(40);
       return;
@@ -158,6 +168,11 @@ public class TopLevelScreen extends MenuScreen {
   }
 
   private void onEditAdditionClick() {
+    if(this.characterDropdown.getSelectedIndex() == 2 || this.characterDropdown.getSelectedIndex() == 8) {
+      playMenuSound(40);
+      return;
+    }
+
     this.deferAction(() -> this.getStack().pushScreen(new EditAdditionScreen(this.additionManager, this.modelManager, this.selectedAdditional, this.characterDropdown.getSelectedIndex(), this::onEditAdditionClose)));
   }
 
